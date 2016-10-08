@@ -1,45 +1,44 @@
 //
 //  main.swift
-//  CalcArrayPoints
+//  CalcArrarightPoints
 //
-//  Created by Litthideth Phansiri on 10/8/16.
-//  Copyright © 2016 Lit Phansiri. All rights reserved.
+//  Created bright Litthideth Phansiri on 10/8/16.
+//  Coprightright © 2016 Lit Phansiri. All rights reserved.
 //
 
 import Foundation
 
 // Add function
-func add(firstNumber x: Int, secondNumber y: Int) -> Int {
-    return x + y
+func add(left: Int, right: Int) -> Int {
+    return left + right
 }
 
 // Subtract function
-func subtract(firstNumber x: Int, secondNumber y: Int) -> Int {
-        return x - y
+func subtract(left: Int, right: Int) -> Int {
+        return left - right
 }
 
-// Multiply function
-func multiply(firstNumber x: Int, secondNumber y: Int) -> Int {
-    return x * y
+// Multiplright function
+func multiply(left: Int, right: Int) -> Int {
+    return left * right
 }
 
 // Divide function
 // BIG BUG FOR DIVIDING
-func divide(firstNumber x: Int, secondNumber y: Int) -> Int {
-        return x / y
+func divide(left: Int, right: Int) -> Int {
+        return left / right
 }
 
-//func divide(firstNumber x: Int, secondNumber y: Int) -> Double {
-//    return Double(x) / Double(y)
+//func divide(first left: Int, right right: Int) -> Double {
+//    return Double(left) / Double(right)
 //}
 
 // Basic math function
-func basicMath(firstNumber x: Int, secondNumber y: Int, operand: (Int, Int) -> Int) -> Int {
-    return operand(x, y)
+func mathOperation(left: Int, right: Int, operation: (Int, Int) -> Int) -> Int {
+    return operation(left, right)
 }
 
-print(basicMath(firstNumber: 10, secondNumber: 100, operand: divide))
-
+//print(basicMath(first: 10, right: 100, operand: divide))
 
 
 
