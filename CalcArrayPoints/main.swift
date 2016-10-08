@@ -72,6 +72,25 @@ func reduce(array: Array<Int>, operation: (Array<Int>) -> Int) -> Int {
     return operation(array)
 }
 
+// add with tuples
+func add(p1: (x: Int, y: Int), p2: (x: Int, y: Int)) -> (Int, Int) {
+    return (p1.x + p2.x, p1.y + p2.y)
+}
+
+// subtract with tuples
+func subtract(p1: (x: Int, y: Int), p2: (x: Int, y: Int)) -> (Int, Int) {
+    return (p1.x - p2.x, p1.y - p2.y)
+}
+
+// handle non-two-arity tuples without crashing
+
+
+
+
+
+
+
+
 
 
 
