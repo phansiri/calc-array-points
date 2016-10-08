@@ -77,10 +77,30 @@ func add(p1: (x: Int, y: Int), p2: (x: Int, y: Int)) -> (Int, Int) {
     return (p1.x + p2.x, p1.y + p2.y)
 }
 
+
+func add(p1: (Dictionary<String, Int>), p2: (Dictionary<String, Int>)) -> (Dictionary<String, Int>) {
+    var result = [String:Int]()
+    result = ["y": p1["y"]! + p2["y"]!, "x": p1["x"]! + p2["x"]!]
+    return result
+}
+
+let dictionaryIntTest1 = [
+    "x" : 2,
+    "y" : 6
+]
+let dictionaryIntTest2 = [
+    "x" : 5,
+    "y" : 4
+]
+
+print(add(p1: dictionaryIntTest1, p2: dictionaryIntTest2))
+
 // subtract with tuples
 func subtract(p1: (x: Int, y: Int), p2: (x: Int, y: Int)) -> (Int, Int) {
     return (p1.x - p2.x, p1.y - p2.y)
 }
+
+
 
 // handle non-two-arity tuples without crashing
 
