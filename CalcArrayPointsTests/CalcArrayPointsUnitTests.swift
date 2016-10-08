@@ -106,19 +106,19 @@ class CalcArrayPointsUnitTests: XCTestCase {
         let subtractPointResult = subtract(p1: testPoint1, p2: testPoint2)
         XCTAssert(subtractPointResult.0 == -3 && subtractPointResult.1 == 2)
         
-        let addPointDictionaryResult = add(p1: dictionaryIntTest1, p2: dictionaryIntTest2)!
-        XCTAssert(addPointDictionaryResult["x"]! == 7 && addPointDictionaryResult["y"]! == 10)
+        let addPointDictionaryResult = add(p1: dictionaryIntTest1, p2: dictionaryIntTest2)
+        XCTAssert(addPointDictionaryResult["x"] == 7 && addPointDictionaryResult["y"] == 10)
         
-        let subtractPointDictionaryResult = subtract(p1: dictionaryIntTest1, p2: dictionaryIntTest2)!
-        XCTAssert(subtractPointDictionaryResult["x"]! == -3 && subtractPointDictionaryResult["y"]! == 2)
+        let subtractPointDictionaryResult = subtract(p1: dictionaryIntTest1, p2: dictionaryIntTest2)
+        XCTAssert(subtractPointDictionaryResult["x"] == -3 && subtractPointDictionaryResult["y"] == 2)
         
-        let addPointDoubleDictionaryTest = add(p1: dictionaryDoubleTest1, p2: dictionaryDoubleTest2)!
-        XCTAssert(addPointDoubleDictionaryTest["x"]! == 8.1
-            && addPointDoubleDictionaryTest["y"]! == 8.0)
+        let addPointDoubleDictionaryTest = add(p1: dictionaryDoubleTest1, p2: dictionaryDoubleTest2)
+        XCTAssert(addPointDoubleDictionaryTest["x"] == 8.1
+            && addPointDoubleDictionaryTest["y"] == 8.0)
         
-        let subtractPointDoubleDictionaryTest = subtract(p1: dictionaryDoubleTest1, p2: dictionaryDoubleTest2)!
-        XCTAssert(subtractPointDoubleDictionaryTest["x"]! == -2.9
-            && subtractPointDoubleDictionaryTest["y"]! == -1.0)
+        let subtractPointDoubleDictionaryTest = subtract(p1: dictionaryDoubleTest1, p2: dictionaryDoubleTest2)
+        XCTAssert(subtractPointDoubleDictionaryTest["x"] == -2.9
+            && subtractPointDoubleDictionaryTest["y"] == -1.0)
         
         // don't crash on nil
         let nilEntryDict : Dictionary<String, Double>? = nil
