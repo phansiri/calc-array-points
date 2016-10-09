@@ -46,7 +46,7 @@ func add(array: Array<Int>) -> Int {
 
 // multiply method that takes a list as the parameter, multiply all elements and returns the result
 func multiply(array: Array<Int>) -> Int {
-    var result: Int = 0
+    var result: Int = 1
     for index in array {
         result *= index
     }
@@ -83,99 +83,122 @@ func add(p1: (x: Int, y: Int), p2: (x: Int, y: Int)) -> (Int, Int) {
  XCTAssert(addPointDictionaryResult["x"]! == 7 && addPointDictionaryResult["y"]! == 10)
  */
 
-func add(p1: (Dictionary<String, Int>), p2: (Dictionary<String, Int>)) -> (Dictionary<String, Int>) {
+func add(p1: (Dictionary<String, Int>)?, p2: (Dictionary<String, Int>)?) -> (Dictionary<String, Int>) {
     var xResult = 0
     var yResult = 0
     
-    for (key, value) in p1 {
+    if ((p1?["x"]) != nil), ((p1?["y"]) != nil) {
+    for (key, value) in p1! {
         if key == "x" {
-            print(key)
             xResult += value
         } else {
-            print(key)
             yResult += value
         }
     }
-    
-    for (key, value) in p2 {
+    }
+
+    if ((p2?["x"]) != nil), ((p2?["y"]) != nil) {
+    for (key, value) in p2! {
+        
         if key == "x" {
             xResult += value
         } else {
             yResult += value
         }
+    }
     }
     return ["x": xResult, "y": yResult]
 }
 
-func add(p1: (Dictionary<String, Double>), p2: (Dictionary<String, Double>)) -> (Dictionary<String, Double>) {
+func add(p1: (Dictionary<String, Double>)?, p2: (Dictionary<String, Double>)?) -> (Dictionary<String, Double>) {
     var xResult: Double = 0.0
     var yResult: Double = 0.0
     
-    for (key, value) in p1 {
-        if key == "x" {
-            print(key)
-            xResult += value
-        } else {
-            print(key)
-            yResult += value
-        }
-    }
-    
-    for (key, value) in p2 {
-        if key == "x" {
-            xResult += value
-        } else {
-            yResult += value
-        }
-    }
-    return ["x": xResult, "y": yResult]
-}
-
-func subtract(p1: (Dictionary<String, Int>), p2: (Dictionary<String, Int>)) -> (Dictionary<String, Int>) {
-    var xResult = 0
-    var yResult = 0
-    
-    if p1 {
-        for (key, value) in p1 {
+    if ((p1?["x"]) != nil), ((p1?["y"]) != nil) {
+        for (key, value) in p1! {
             if key == "x" {
-                print(key)
-                xResult -= value
+                xResult += value
             } else {
-                print(key)
-                yResult -= value
+                yResult += value
             }
         }
     }
     
-    for (key, value) in p2 {
-        if key == "x" {
-            xResult -= value
-        } else {
-            yResult -= value
+    if ((p2?["x"]) != nil), ((p2?["y"]) != nil) {
+        for (key, value) in p2! {
+            if key == "x" {
+                xResult += value
+            } else {
+                yResult += value
+            }
         }
     }
     return ["x": xResult, "y": yResult]
 }
 
-func subtract(p1: (Dictionary<String, Double>), p2: (Dictionary<String, Double>)) -> (Dictionary<String, Double>) {
-    var xResult = 0.0
-    var yResult = 0.0
+func subtract(p1: (Dictionary<String, Int>)?, p2: (Dictionary<String, Int>)?) -> (Dictionary<String, Int>) {
+    var xResult = 0
+    var yResult = 0
     
-    for (key, value) in p1 {
-        if key == "x" {
-            print(key)
-            xResult -= value
-        } else {
-            print(key)
-            yResult -= value
+    if ((p1?["x"]) != nil), ((p1?["y"]) != nil) {
+        for (key, value) in p1! {
+            if key == "x" {
+                if xResult == 0 {
+                    xResult = value
+                } else {
+                    xResult -= value
+                }
+            } else {
+                if yResult == 0 {
+                    yResult = value
+                } else {
+                    yResult -= value
+                }
+            }
         }
     }
     
-    for (key, value) in p2 {
-        if key == "x" {
-            xResult -= value
-        } else {
-            yResult -= value
+    if ((p2?["x"]) != nil), ((p2?["y"]) != nil) {
+        for (key, value) in p2! {
+            if key == "x" {
+                xResult -= value
+            } else {
+                yResult -= value
+            }
+        }
+    }
+    return ["x": xResult, "y": yResult]
+}
+
+func subtract(p1: (Dictionary<String, Double>)?, p2: (Dictionary<String, Double>)?) -> (Dictionary<String, Double>) {
+    var xResult = 0.0
+    var yResult = 0.0
+    
+    if ((p1?["x"]) != nil), ((p1?["y"]) != nil) {
+        for (key, value) in p1! {
+            if key == "x" {
+                if xResult == 0 {
+                    xResult = value
+                } else {
+                    xResult -= value
+                }
+            } else {
+                if yResult == 0 {
+                    yResult = value
+                } else {
+                    yResult -= value
+                }
+            }
+        }
+    }
+    
+    if ((p2?["x"]) != nil), ((p2?["y"]) != nil) {
+        for (key, value) in p2! {
+            if key == "x" {
+                xResult -= value
+            } else {
+                yResult -= value
+            }
         }
     }
     return ["x": xResult, "y": yResult]
@@ -187,20 +210,14 @@ func subtract(p1: (x: Int, y: Int), p2: (x: Int, y: Int)) -> (Int, Int) {
 }
 
 
-
-// handle non-two-arity tuples without crashing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let dictionaryDoubleTest1 = [
+    "x" : 2.6,
+    "y" : 3.5
+]
+let dictionaryDoubleTest2 = [
+    "x" : 5.5,
+    "y" : 4.5
+]
+let subtractPointDoubleDictionaryTest = subtract(p1: dictionaryDoubleTest1, p2: dictionaryDoubleTest2)
+print(subtractPointDoubleDictionaryTest)
 
