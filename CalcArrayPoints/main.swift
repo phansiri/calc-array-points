@@ -9,30 +9,46 @@
 import Foundation
 
 // Calculator
-// Add method that takes parameters left and right and returns the result
+// Add method that takes parameters left and right and returns the result either Ints or Doubles
 func add(left: Int, right: Int) -> Int {
     return left + right
 }
+func add(left: Double, right: Double) -> Double {
+    return left + right
+}
 
-// Subtract method that takes parameters left and right and returns the result
+// Subtract method that takes parameters left and right and returns the result either Ints or Doubles
 func subtract(left: Int, right: Int) -> Int {
         return left - right
 }
+func subtract(left: Double, right: Double) -> Double {
+    return left - right
+}
 
-// Multiply method that takes parameters left and right and returns the result
+// Multiply method that takes parameters left and right and returns the result either Ints or Doubles
 func multiply(left: Int, right: Int) -> Int {
     return left * right
 }
-
-// Divide method that takes parameters left and right and returns the result
-func divide(left: Int, right: Int) -> Int {
-        return left / right
+func multiply(left: Double, right: Double) -> Double {
+    return left * right
 }
 
-// Math operation that takes parameters left, right and operation and returns the result
+// Divide method that takes parameters left and right and returns the result either Ints or Doubles
+func divide(left: Int, right: Int) -> Double {
+        return Double(left) / Double(right)
+}
+func divide(left: Double, right: Double) -> Double {
+    return left / right
+}
+
+// Math operation that takes parameters left, right and operation and returns the result either Ints or Doubles
 func mathOperation(left: Int, right: Int, operation: (Int, Int) -> Int) -> Int {
     return operation(left, right)
 }
+func mathOperation(left: Double, right: Double, operation: (Double, Double) -> Double) -> Double {
+    return operation(left, right)
+}
+
 
 // Array Fun
 // add method that takes a list as the parameter, add all elements and returns the result
@@ -77,12 +93,13 @@ func add(p1: (x: Int, y: Int), p2: (x: Int, y: Int)) -> (Int, Int) {
     return (p1.x + p2.x, p1.y + p2.y)
 }
 
-/*
- Test...
- let addPointDictionaryResult = add(p1: dictionaryIntTest1, p2: dictionaryIntTest2)!
- XCTAssert(addPointDictionaryResult["x"]! == 7 && addPointDictionaryResult["y"]! == 10)
- */
 
+// subtract with tuples
+func subtract(p1: (x: Int, y: Int), p2: (x: Int, y: Int)) -> (Int, Int) {
+    return (p1.x - p2.x, p1.y - p2.y)
+}
+
+// add with dictionary for Ints
 func add(p1: (Dictionary<String, Int>)?, p2: (Dictionary<String, Int>)?) -> (Dictionary<String, Int>) {
     var xResult = 0
     var yResult = 0
@@ -110,6 +127,7 @@ func add(p1: (Dictionary<String, Int>)?, p2: (Dictionary<String, Int>)?) -> (Dic
     return ["x": xResult, "y": yResult]
 }
 
+// add with dictionary for Doubles
 func add(p1: (Dictionary<String, Double>)?, p2: (Dictionary<String, Double>)?) -> (Dictionary<String, Double>) {
     var xResult: Double = 0.0
     var yResult: Double = 0.0
@@ -136,6 +154,7 @@ func add(p1: (Dictionary<String, Double>)?, p2: (Dictionary<String, Double>)?) -
     return ["x": xResult, "y": yResult]
 }
 
+// subtract with dictionary for Ints
 func subtract(p1: (Dictionary<String, Int>)?, p2: (Dictionary<String, Int>)?) -> (Dictionary<String, Int>) {
     var xResult = 0
     var yResult = 0
@@ -170,6 +189,7 @@ func subtract(p1: (Dictionary<String, Int>)?, p2: (Dictionary<String, Int>)?) ->
     return ["x": xResult, "y": yResult]
 }
 
+// subtract with dictionary for Doubles
 func subtract(p1: (Dictionary<String, Double>)?, p2: (Dictionary<String, Double>)?) -> (Dictionary<String, Double>) {
     var xResult = 0.0
     var yResult = 0.0
@@ -203,21 +223,3 @@ func subtract(p1: (Dictionary<String, Double>)?, p2: (Dictionary<String, Double>
     }
     return ["x": xResult, "y": yResult]
 }
-
-// subtract with tuples
-func subtract(p1: (x: Int, y: Int), p2: (x: Int, y: Int)) -> (Int, Int) {
-    return (p1.x - p2.x, p1.y - p2.y)
-}
-
-
-let dictionaryDoubleTest1 = [
-    "x" : 2.6,
-    "y" : 3.5
-]
-let dictionaryDoubleTest2 = [
-    "x" : 5.5,
-    "y" : 4.5
-]
-let subtractPointDoubleDictionaryTest = subtract(p1: dictionaryDoubleTest1, p2: dictionaryDoubleTest2)
-print(subtractPointDoubleDictionaryTest)
-
